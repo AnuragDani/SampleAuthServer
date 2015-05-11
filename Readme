@@ -1,0 +1,30 @@
+#install virtualenv
+pip install virtualenv
+
+#Create virtual env by:-
+mkvirtualenv auth
+
+#Select virtualenv
+workon auth
+
+#installing requirements for the API
+pip install -r requirements.txt
+
+#run API using 
+python auth.py
+
+#Examples for using API
+
+##For authentication File
+#register
+curl -i -X POST -H "Content-Type: application/json" -d '{"username":"anurag","password":"python"}' http://127.0.0.1:5000/api/users
+
+#access protected resources
+curl -u anurag:python -i -X GET http://127.0.0.1:5000/api/resource
+
+#request token
+curl -u anurag:python -i -X GET http://127.0.0.1:5000/api/token
+
+#use token to access instead of username
+curl -u eyJhbGciOiJIUzI1NiIsImV4cCI6MTQwMzEyMTk3MywiaWF0IjoxNDAzMTIxMzczfQ.eyJpZCI6MX0.pr2Ga6n9BDG8fm9GswHGaDPKQe64k5uTzVYTYr0Iqqk:x -i -X GET http://127.0.0.1:5000/api/resource
+
